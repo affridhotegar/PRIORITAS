@@ -399,7 +399,7 @@ function renderPriorityMode(sc,interaction){
  const selects=[...interaction.querySelectorAll('.rankSelect')],submit=$('rankSubmit');
  const validate=()=>{const values=selects.map(x=>x.value);submit.disabled=values.some(x=>!x)||new Set(values).size!==3;};
  selects.forEach(x=>x.addEventListener('change',validate));
- submit.addEventListener('click',()=>{const ordered=selects.map(x=>({i:Number(x.dataset.option),rank:Number(x.value)})).sort((a,b)=>a.rank-b.rank).map(x=>x.i);const matches=ordered.filter((x,index)=>x===index).length;choose(matches===3?0:matches===2?1:2);submit.disabled=true;});
+ submit.addEventListener('click',()=>{const ordered=selects.map(x=>({i:Number(x.dataset.option),rank:Number(x.value)})).sort((a,b)=>a.rank-b.rank).map(x=>x.i);const result=ordered[0]===0?(ordered[1]===1?0:1):2;choose(result);submit.disabled=true;});
 }
 function renderOpportunityMode(sc,interaction){
  const options=sc.options.map((o,i)=>`<option value="${i}">${o.t}</option>`).join('');
@@ -436,7 +436,7 @@ function renderScene(){
  const ch=chapters[S.chapter],sc=ch.scenes[S.scene];
  $('chapterTag').textContent='BABAK '+String(S.chapter+1).padStart(2,'0')+' · '+ch.title.toUpperCase();
  $('layerStage').textContent='BABAK '+String(S.chapter+1).padStart(2,'0');
- $('chapterTitle').textContent=ch.title;$('roundLabel').textContent='Tantangan '+(S.scene+1)+' dari '+ch.scenes.length;
+ $('chapterTitle').textContent=ch.title;
  const totalScenes=chapters.reduce((n,c)=>n+c.scenes.length,0);
  $('gameProgress').style.width=((chapters.slice(0,S.chapter).reduce((n,c)=>n+c.scenes.length,0)+S.scene)/totalScenes*100)+'%';
  $('roundLabel').textContent='Tantangan '+(S.scene+1)+' dari '+ch.scenes.length;
@@ -469,7 +469,7 @@ $('nextBtn').onclick=()=>{
  save();renderScene();
  if(S.chapter>wasChapter&&S.chapter<5){const ch=chapters[S.chapter];showAchievement('Babak selesai!',`Kamu membuka babak berikutnya: ${ch.title}. ${ch.mission}`,ch.icon,'PROGRES CERITA');}
  else if(S.chapter===chapters.length){playSfx('ending');}
- else if(S.decisions.length===5||S.decisions.length===10){showAchievement('Kamu semakin dekat!',`${S.decisions.length} dari 15 keputusan telah diselesaikan. Terus pertimbangkan kebutuhan dan konsekuensinya.`,'✨','PENCAPAIAN PROGRES');}
+ else if([5,10,15,20].includes(S.decisions.length)){showAchievement('Kamu semakin dekat!',`${S.decisions.length} dari 25 keputusan telah diselesaikan. Tantangan berikutnya akan meminta pertimbangan yang lebih mendalam.`,'✨','PENCAPAIAN PROGRES');}
 };
 $('showLogBtn').onclick=()=>{const lines=S.decisions.map((d,i)=>`${i+1}. Babak ${d.chapter+1}: ${d.answer}\n   ${d.feedback}`).join('\n\n');alert(lines||'Belum ada keputusan. Mulai permainan untuk membuat catatan.')};
 function finish(){
