@@ -19,17 +19,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Extract inline JavaScript
+      - name: Extract inline JavaScript and check required features
         shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
           html = Path("index.html").read_text(encoding="utf-8")
-          scripts = re.findall(r"<script(?:\\s[^>]*)?>([\\s\\S]*?)</script>", html, flags=re.I)
-          if len(scripts) != 1:
-              raise SystemExit(f"Expected exactly one inline script, found {len(scripts)}")
-          Path("/tmp/prioritas-inline.js").write_text(scripts[0], encoding="utf-8")
+          marker = "<script>"
+          start = html.find(marker)
+          end = html.rfind("</script>")
+          if start < 0 or end <= start:
+              raise SystemExit("Inline JavaScript block was not found.")
+          script = html[start + len(marker):end]
+          Path("/tmp/prioritas-inline.js").write_text(script, encoding="utf-8")
           required = [
               "https://forms.gle/QmG3LGY4U3pUVad59",
               "wa.me/qr/S6S23M26XBVGO1?s=v",
@@ -45,6 +47,8 @@ jobs:
           missing = [value for value in required if value not in html]
           if missing:
               raise SystemExit("Missing required page elements: " + ", ".join(missing))
+          if html.count('"type":"choice"') + html.count("type:'choice'") < 25:
+              raise SystemExit("Expected 25 gameplay scenes.")
           print("HTML integration checks passed.")
           PY
       - name: Check JavaScript syntax
