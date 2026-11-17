@@ -1,0 +1,55 @@
+name: Validate PRIORITAS
+
+on:
+  push:
+    branches:
+      - main
+      - feature/music-gameplay-profile-links
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-html-and-javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Extract inline JavaScript and check required features
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          marker = "<script>"
+          start = html.find(marker)
+          end = html.rfind("</script>")
+          if start < 0 or end <= start:
+              raise SystemExit("Inline JavaScript block was not found.")
+          script = html[start + len(marker):end]
+          Path("/tmp/prioritas-inline.js").write_text(script, encoding="utf-8")
+          required = [
+              "https://forms.gle/QmG3LGY4U3pUVad59",
+              "wa.me/qr/S6S23M26XBVGO1?s=v",
+              "ridhoamim.al@gmail.com",
+              "linkedin.com/in/affridho-tegar-al-amin-544143367/",
+              "function renderPriorityMode",
+              "function renderOpportunityMode",
+              "function renderBudgetMode",
+              "function renderAuditMode",
+              "const extraChallenges=",
+              'id="musicVolume"',
+          ]
+          missing = [value for value in required if value not in html]
+          if missing:
+              raise SystemExit("Missing required page elements: " + ", ".join(missing))
+          if html.count('"type":"choice"') + html.count("type:'choice'") < 25:
+              raise SystemExit("Expected 25 gameplay scenes.")
+          print("HTML integration checks passed.")
+          PY
+      - name: Check JavaScript syntax
+        run: node --check /tmp/prioritas-inline.js
