@@ -37,6 +37,31 @@ body.inGame .top{margin-bottom:12px}body.inGame .nav{display:none}body.inGame .s
 body.highContrast{--line:rgba(255,255,255,.25);--muted:#d1dcf1}
 @media(max-width:900px){.menuTiles{grid-template-columns:repeat(2,1fr)}.menuTile:last-child{grid-column:span 2}}
 @media(max-width:520px){.menuTiles{grid-template-columns:1fr 1fr;gap:8px}.menuTile{min-height:78px;padding:11px}.menuTile .tileIcon{width:34px;height:34px}.menuTile b{font-size:11px}.menuTile small{font-size:9px}.gameLayerBar .btn{padding:9px 11px;font-size:11px}.layerTrail{font-size:9px}}
+
+/* Tampilan yang berbeda untuk setiap jenis tantangan */
+.scenario[data-mode="quick"]{background:linear-gradient(145deg,#213d67,#142541)}
+.scenario[data-mode="priority"]{background:linear-gradient(145deg,#203e59,#152d42);border-color:#62c8ff55}
+.scenario[data-mode="opportunity"]{background:linear-gradient(145deg,#3b315f,#1b2444);border-color:#b59aff55}
+.scenario[data-mode="budget"]{background:linear-gradient(145deg,#174a49,#142d3b);border-color:#5de0b355}
+.scenario[data-mode="audit"]{background:linear-gradient(145deg,#4a3b2a,#292b3f);border-color:#ffd36a55}
+.modePanel{position:relative;z-index:1;margin-top:18px;padding:16px;border:1px solid #ffffff22;border-radius:17px;background:#07132977}
+.modePanel h4{margin:0 0 8px;font-size:14px}.modePanel p{font-size:12px;margin:0 0 12px;color:#d4def0;line-height:1.55}
+.modeGrid{display:grid;gap:9px}.modeRow{display:grid;grid-template-columns:minmax(0,1fr) 125px;gap:10px;align-items:center;padding:10px;border:1px solid #ffffff19;border-radius:12px;background:#ffffff08;font-size:12px}
+.modeRow select,.modeSelect{width:100%;background:#0c1730;color:#fff;border:1px solid #ffffff2a;padding:10px;border-radius:10px}
+.modeActions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:13px}
+.modeSubmit{border:0;border-radius:11px;background:linear-gradient(135deg,var(--mint),var(--cyan));color:#092039;font-weight:900;padding:11px 15px}
+.modeSubmit:disabled{opacity:.45;cursor:not-allowed}
+.budgetFields{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.budgetField{padding:11px;border-radius:12px;background:#ffffff09;border:1px solid #ffffff1a}
+.budgetField label{display:block;font-size:11px;color:var(--muted);margin-bottom:7px}.budgetField input{width:100%;min-width:0;padding:9px;border:1px solid #ffffff28;border-radius:9px;background:#08152d;color:white}
+.budgetTotal{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-size:13px;font-weight:800}
+.auditChecks{display:grid;grid-template-columns:1fr;gap:8px;margin:12px 0}.auditChecks label{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid #ffffff1b;border-radius:10px;background:#ffffff08;font-size:12px;line-height:1.4}
+.auditChecks input{accent-color:var(--mint);margin-top:2px}
+.musicVolume{padding:13px 0 3px;border-bottom:1px solid var(--line)}.musicVolumeHead{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:800}.musicVolume input{width:100%;accent-color:var(--mint);margin-top:11px}
+.contactGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}
+.contactCard{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:15px;background:#ffffff08;min-width:0}.contactCard .contactIcon{font-size:24px}
+.contactCard small{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}.contactCard a{color:var(--cyan);font-weight:800;font-size:13px;overflow-wrap:anywhere}
+.feedbackLink{display:inline-flex;align-items:center;gap:10px;text-decoration:none;margin-top:12px}
+@media(max-width:520px){.budgetFields,.contactGrid{grid-template-columns:1fr}.modeRow{grid-template-columns:minmax(0,1fr) 105px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 @media(max-width:850px){.hero,.layout,.gamegrid{grid-template-columns:1fr}.heroSide{min-height:170px}.coinart{font-size:40px}.levelgrid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.gamegrid{gap:12px}.scenario{min-height:unset}.top{align-items:flex-start}.topright{flex-wrap:wrap;justify-content:flex-end}}
@@ -62,7 +87,7 @@ body.highContrast{--line:rgba(255,255,255,.25);--muted:#d1dcf1}
   <button class="menuTile playTile" id="menuPlay"><span class="tileIcon">▶</span><span><b>Mulai bermain</b><small>Masuk ke petualangan 5 babak</small></span><i>↗</i></button>
   <button class="menuTile" id="menuSettings"><span class="tileIcon">⚙</span><span><b>Pengaturan</b><small>Atur efek suara dan tampilan</small></span><i>↗</i></button>
   <button class="menuTile" id="menuGallery"><span class="tileIcon">✦</span><span><b>Galeri ending</b><small>Lihat akhir cerita yang terbuka</small></span><i>↗</i></button>
-  <button class="menuTile" id="menuReviews"><span class="tileIcon">☆</span><span><b>Ulasan</b><small>Beri penilaian dan masukan</small></span><i>↗</i></button>
+  <button class="menuTile" id="menuReviews"><span class="tileIcon">☆</span><span><b>Ulasan</b><small>Langsung ke formulir Google Forms</small></span><i>↗</i></button>
   <button class="menuTile" id="menuCredits"><span class="tileIcon">ⓘ</span><span><b>Kredit</b><small>Informasi pengembang</small></span><i>↗</i></button>
  </div>
  <div class="stats">
@@ -108,19 +133,33 @@ body.highContrast{--line:rgba(255,255,255,.25);--muted:#d1dcf1}
 </section>
 
 <section class="page" id="reviews">
- <div class="layout">
-  <div class="card"><div class="eyebrow">Suara pemain</div><h2>Ulasan & Masukan</h2><p class="muted">Bagikan pengalamanmu setelah bermain. Ulasan disimpan di perangkat ini dan tidak dikirim ke server.</p>
-   <form class="reviewform" id="reviewForm"><div class="field"><label for="reviewName">Nama (opsional)</label><input id="reviewName" maxlength="35" placeholder="Nama atau inisial"></div><div class="field"><label>Penilaian permainan</label><div class="stars" id="starPicker"><button type="button" data-star="1" aria-label="1 bintang">★</button><button type="button" data-star="2" aria-label="2 bintang">★</button><button type="button" data-star="3" aria-label="3 bintang">★</button><button type="button" data-star="4" aria-label="4 bintang">★</button><button type="button" data-star="5" aria-label="5 bintang">★</button></div></div><div class="field"><label for="reviewText">Ulasan atau saran</label><textarea id="reviewText" maxlength="500" required placeholder="Bagian apa yang paling kamu sukai? Apa yang perlu diperbaiki?"></textarea></div><button class="btn primary" type="submit">Kirim ulasan</button></form>
-  </div>
-  <div class="card"><div class="eyebrow">Masukan pemain</div><h3>Ulasan tersimpan</h3><p class="small muted" id="reviewCount">Belum ada ulasan di perangkat ini.</p><div id="reviewList"></div><p class="note" style="margin-top:15px">Catatan: fitur ini menyimpan ulasan secara lokal pada browser yang digunakan. Untuk mengumpulkan ulasan dari banyak pemain, hubungkan formulir ini ke Google Forms atau layanan backend.</p></div>
+ <div class="card">
+  <div class="eyebrow">Suara pemain</div><h2>Ulasan & Umpan Balik</h2>
+  <p class="muted">Bagikan penilaian, saran, atau laporan kendala melalui formulir resmi PRIORITAS.</p>
+  <a class="btn primary feedbackLink" href="https://forms.gle/QmG3LGY4U3pUVad59">✉ Buka formulir ulasan dan umpan balik ↗</a>
+  <p class="small muted" style="margin-top:14px">Formulir dibuka langsung melalui Google Forms.</p>
  </div>
 </section>
 
 <section class="page" id="credits">
- <div class="card"><div class="eyebrow">Di balik permainan</div><h2>Kredit</h2><p class="muted">Terima kasih telah memainkan PRIORITAS: Misi Uang Terbatas.</p>
-  <div class="layout"><div class="sidecard"><div class="sceneIcon">🎮</div><h3>Pengembang & Konsep</h3><p><b>Affridho Tegar Al Amin</b></p><p class="small muted">Konsep permainan, materi pembelajaran, dan pengembangan proyek.</p></div><div class="sidecard"><div class="sceneIcon">📚</div><h3>Materi Pembelajaran</h3><p class="small muted">Disusun untuk mendukung pembelajaran ekonomi mengenai cara bertindak ekonomis, skala prioritas, biaya peluang, dan literasi keuangan.</p></div></div>
-  <h3 style="margin-top:20px">Catatan penggunaan</h3><p class="small muted">Game ini merupakan media pembelajaran. Situasi dan nominal uang di dalam permainan bersifat simulasi, bukan rekomendasi keuangan pribadi. Keputusan terbaik dapat berbeda sesuai kondisi masing-masing.</p>
-  <div class="note">Versi 1.0 · Dibuat dengan HTML, CSS, dan JavaScript. Tidak memerlukan akun atau koneksi internet setelah file dibuka.</div>
+ <div class="card">
+  <div class="eyebrow">Di balik permainan</div><h2>Profil Pengembang</h2>
+  <p class="muted">Informasi kontak dan media profesional pengembang PRIORITAS.</p>
+  <div class="sidecard" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+   <div class="sceneIcon" style="font-size:46px;margin:0">👨‍💻</div>
+   <div><div class="eyebrow">PENGEMBANG GAME</div><h3 style="font-size:22px;margin:5px 0">Affridho Tegar Al Amin</h3><p class="small muted" style="margin:0">Konsep permainan, materi pembelajaran, dan pengembangan media edukasi.</p></div>
+  </div>
+  <h3 style="margin-top:20px">Kontak dan media sosial</h3>
+  <div class="contactGrid">
+   <div class="contactCard"><span class="contactIcon">📞</span><div><small>Nomor HP</small><a href="tel:+62895320599887">0895 3205 99887</a></div></div>
+   <div class="contactCard"><span class="contactIcon">🟢</span><div><small>WhatsApp</small><a href="https://wa.me/qr/S6S23M26XBVGO1?s=v" target="_blank" rel="noopener noreferrer">Hubungi melalui WhatsApp ↗</a></div></div>
+   <div class="contactCard"><span class="contactIcon">✉️</span><div><small>Email</small><a href="mailto:ridhoamim.al@gmail.com">ridhoamim.al@gmail.com</a></div></div>
+   <div class="contactCard"><span class="contactIcon">💼</span><div><small>LinkedIn</small><a href="https://www.linkedin.com/in/affridho-tegar-al-amin-544143367/" target="_blank" rel="noopener noreferrer">Profil profesional ↗</a></div></div>
+   <div class="contactCard"><span class="contactIcon">🎓</span><div><small>Edlink</small><span class="small muted">Tautan profil Edlink menunggu alamat profil yang tepat.</span></div></div>
+  </div>
+  <h3 style="margin-top:24px">Tentang PRIORITAS</h3>
+  <p class="small muted" style="line-height:1.7">PRIORITAS: Misi Uang Terbatas merupakan media pembelajaran ekonomi tentang cara bertindak ekonomis, skala prioritas, biaya peluang, dan literasi keuangan. Nominal dan situasi di dalam permainan bersifat simulasi.</p>
+  <div class="note">Versi 2.0 · Dibuat dengan HTML, CSS, JavaScript, dan audio sintetis.</div>
  </div>
 </section>
 
@@ -132,6 +171,8 @@ body.highContrast{--line:rgba(255,255,255,.25);--muted:#d1dcf1}
   <div class="eyebrow">PENGATURAN</div><h2 id="settingsTitle">Sesuaikan permainan</h2>
   <p class="muted small">Atur pengalaman bermain sesuai kenyamananmu.</p>
   <label class="settingRow"><span><b>Efek suara</b><small>Suara pilihan, perpindahan, dan pencapaian</small></span><input type="checkbox" id="sfxToggle" checked></label>
+  <label class="settingRow"><span><b>Musik instrumental</b><small>Musik latar tanpa lirik, berbeda untuk beranda dan setiap babak</small></span><input type="checkbox" id="musicToggle" checked></label>
+  <div class="musicVolume"><div class="musicVolumeHead"><label for="musicVolume">Volume musik</label><output id="musicVolumeValue">32%</output></div><input type="range" id="musicVolume" min="0" max="100" value="32" step="1"></div>
   <label class="settingRow"><span><b>Animasi transisi</b><small>Efek perpindahan antarbagian permainan</small></span><input type="checkbox" id="motionToggle" checked></label>
   <label class="settingRow"><span><b>Mode kontras tinggi</b><small>Meningkatkan kontras teks dan panel</small></span><input type="checkbox" id="contrastToggle"></label>
   <div class="modalActions"><button class="btn secondary" id="resetProgress">Reset progres</button><button class="btn primary" id="doneSettings">Selesai</button></div>
@@ -147,6 +188,7 @@ body.highContrast{--line:rgba(255,255,255,.25);--muted:#d1dcf1}
 (() => {
 'use strict';
 const $ = id => document.getElementById(id);
+const FEEDBACK_URL='https://forms.gle/QmG3LGY4U3pUVad59';
 const fmt = n => 'Rp' + Math.round(n).toLocaleString('id-ID');
 const clamp = n => Math.max(0,Math.min(100,Math.round(n)));
 const chapters = [
@@ -236,6 +278,10 @@ const chapters = [
   ]}
  ]}
 ];
+// Sepuluh tantangan tambahan: setiap babak berisi lima adegan.
+const extraChallenges=[[{"type":"choice","tag":"SITUASI 4 · KONEKTIVITAS","title":"Paket data hampir habis","icon":"📶","text":"Tugas harus dikirim malam ini, tetapi paket data hampir habis. Paket harian Rp8.000, paket mingguan Rp25.000, atau Wi-Fi gratis besok tersedia. Apa keputusanmu?","chips":["Tugas dikirim malam ini","Sisa uang untuk akhir pekan"],"options":[{"t":"Beli paket harian sesuai kebutuhan malam ini","d":"Membayar sesuai durasi kebutuhan mendesak.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Tepat. Pilihan disesuaikan dengan kebutuhan dan durasi penggunaan.","good":true},{"t":"Gunakan paket bulanan paling mahal","d":"Membayar lebih besar tanpa menghitung pemakaian.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Paket besar bisa berguna bila pemakaian tinggi, tetapi harus dibandingkan dengan anggaran.","good":false},{"t":"Tunda tugas tanpa mencari alternatif","d":"Mengabaikan tenggat tugas.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Menunggu tidak tepat bila tenggat tugas malam ini.","good":false}]},{"type":"choice","tag":"SITUASI 5 · EVALUASI","title":"Diskon yang terlihat menarik","icon":"🏷️","text":"Toko memberi diskon 40% untuk tas yang tidak kamu rencanakan. Tas lama masih layak digunakan dan uang harus cukup untuk kebutuhan sekolah. Apa tindakan paling ekonomis?","chips":["Diskon hanya hari ini","Tas lama masih berfungsi"],"options":[{"t":"Lewati promo dan simpan uang untuk kebutuhan yang direncanakan","d":"Tidak mengubah rencana karena potongan harga.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Benar. Harga murah tidak otomatis membuat barang menjadi kebutuhan.","good":true},{"t":"Beli tas karena takut kehilangan diskon","d":"Membeli karena takut melewatkan promo.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Promo terbatas dapat mendorong pembelian spontan. Periksa kebutuhan sebelum membayar.","good":false},{"t":"Pinjam uang agar bisa membeli tas","d":"Menambah kewajiban untuk barang yang belum diperlukan.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Berutang untuk barang yang tidak mendesak menambah tekanan keuangan.","good":false}]}],[{"type":"choice","tag":"SITUASI 4 · PRIORITAS KELUARGA","title":"Dua kebutuhan muncul bersamaan","icon":"🏠","text":"Kamu berencana membeli buku latihan Rp45.000. Pada hari yang sama, keluarga meminta bantuan membeli kebutuhan dapur Rp50.000. Uangmu tidak cukup untuk keduanya. Apa yang dilakukan?","chips":["Buku latihan Rp45.000","Kebutuhan dapur Rp50.000"],"options":[{"t":"Bicarakan kebutuhan paling mendesak lalu atur ulang pembelian buku","d":"Memastikan kebutuhan penting terpenuhi melalui komunikasi.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Keputusan bijak mempertimbangkan urgensi dan kondisi keluarga.","good":true},{"t":"Tetap membeli buku tanpa memberi tahu keluarga","d":"Mengabaikan kebutuhan lain yang sedang mendesak.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Buku dapat penting, tetapi perlu mempertimbangkan kebutuhan dapur yang sedang mendesak.","good":false},{"t":"Bagi uang sama rata tanpa melihat kebutuhan","d":"Membagi anggaran tanpa analisis kebutuhan.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Pembagian sama rata belum tentu tepat. Perhatikan kebutuhan nyata.","good":false}]},{"type":"choice","tag":"SITUASI 5 · URUTAN TENGGAT","title":"Tiga tenggat dalam satu minggu","icon":"📅","text":"Minggu ini kamu harus membayar iuran kegiatan besok, membeli alat tulis yang habis untuk kelas lusa, dan ingin mengganti earphone yang masih berfungsi. Uang hanya cukup untuk dua hal. Apa yang dipilih?","chips":["Iuran: besok","Alat tulis: lusa","Earphone: belum mendesak"],"options":[{"t":"Bayar iuran dan membeli alat tulis","d":"Menuntaskan dua kebutuhan dengan tenggat terdekat.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Tepat. Dua kebutuhan memiliki tenggat dan mendukung kegiatanmu.","good":true},{"t":"Membeli earphone dan membayar iuran","d":"Mengutamakan keinginan sebelum alat belajar.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Alat tulis yang habis juga dibutuhkan untuk belajar. Earphone dapat menunggu.","good":false},{"t":"Menunda semua pembayaran sampai akhir minggu","d":"Mengabaikan tenggat dan risiko keterlambatan.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Menunda tanpa memastikan tenggat dapat menimbulkan masalah.","good":false}]}],[{"type":"choice","tag":"SITUASI 4 · BIAYA PELUANG","title":"Mengambil pekerjaan paruh waktu","icon":"🧾","text":"Kamu ditawari pekerjaan Sabtu dengan upah Rp100.000. Pada waktu yang sama, kelompok mengadakan sesi persiapan lomba penting. Kamu tidak dapat mengikuti keduanya. Apa yang perlu dinilai?","chips":["Upah Rp100.000","Persiapan lomba"],"options":[{"t":"Bandingkan manfaat upah dengan dampak pada persiapan lomba","d":"Menilai alternatif terbaik yang dikorbankan.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Tepat. Biaya peluang adalah nilai alternatif terbaik yang dilepaskan.","good":true},{"t":"Terima pekerjaan hanya karena ada uang","d":"Mengabaikan manfaat kegiatan kelompok.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Pendapatan penting, tetapi keputusan juga perlu mempertimbangkan nilai persiapan lomba.","good":false},{"t":"Tolak pekerjaan tanpa mempertimbangkan manfaatnya","d":"Melepaskan kesempatan tanpa evaluasi.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Menolak juga merupakan keputusan ekonomi. Bandingkan manfaat kedua alternatif.","good":false}]},{"type":"choice","tag":"SITUASI 5 · ALTERNATIF TERBAIK","title":"Memilih kursus atau menabung","icon":"🎓","text":"Kamu memiliki Rp200.000. Kursus desain singkat berharga Rp150.000 dan dapat membantu tugas sekolah. Alternatifnya, uang itu dapat disimpan untuk kebutuhan bulan depan. Bagaimana menilai biaya peluangnya?","chips":["Dana tersedia Rp200.000","Kursus Rp150.000"],"options":[{"t":"Pertimbangkan manfaat kursus dan nilai tabungan yang dilepaskan","d":"Membandingkan manfaat saat ini dan kebutuhan masa depan.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Benar. Biaya peluang adalah nilai alternatif terbaik yang dikorbankan.","good":true},{"t":"Anggap biaya peluang sama dengan harga kursus","d":"Hanya melihat uang yang dibayarkan.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Harga kursus adalah biaya uang, bukan otomatis biaya peluang.","good":false},{"t":"Ikuti kursus karena teman juga ikut","d":"Tidak menilai manfaat bagi diri sendiri.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Keputusan perlu mempertimbangkan manfaat dan alternatif yang dilepaskan.","good":false}]}],[{"type":"choice","tag":"SITUASI 4 · PROMO BUNDLING","title":"Paket hemat, benarkah hemat?","icon":"🛍️","text":"Toko menawarkan tiga alat tulis satu paket Rp50.000. Kamu hanya membutuhkan satu barang seharga Rp18.000. Sisa uang akan digunakan untuk ongkos. Apa pilihan paling rasional?","chips":["Barang yang diperlukan Rp18.000","Paket bundling Rp50.000"],"options":[{"t":"Beli satu barang yang dibutuhkan dan simpan sisanya untuk ongkos","d":"Membayar sesuai kebutuhan, bukan mengejar jumlah barang.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Tepat. Paket bundling hanya hemat bila seluruh barang akan digunakan.","good":true},{"t":"Ambil paket karena harga satuannya lebih murah","d":"Membeli tambahan yang belum tentu digunakan.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Harga satuan bisa lebih murah, tetapi total pengeluaran lebih besar.","good":false},{"t":"Tidak membeli apa pun meskipun alat tulis dibutuhkan","d":"Menghemat dengan mengabaikan kebutuhan belajar.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Tindakan ekonomis memenuhi kebutuhan dengan biaya wajar.","good":false}]},{"type":"choice","tag":"SITUASI 5 · CASHBACK","title":"Cashback setelah belanja","icon":"💳","text":"Aplikasi menawarkan cashback Rp20.000 jika berbelanja minimal Rp100.000. Barang yang kamu butuhkan hanya Rp65.000. Apakah mengejar cashback tepat?","chips":["Kebutuhan Rp65.000","Syarat belanja Rp100.000"],"options":[{"t":"Belanja sesuai kebutuhan dan abaikan cashback yang memicu belanja tambahan","d":"Menghitung total pengeluaran, bukan hanya hadiah.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Benar. Cashback bukan keuntungan bila harus mengeluarkan uang tambahan untuk barang yang tidak direncanakan.","good":true},{"t":"Tambah belanja Rp35.000 agar mendapat cashback","d":"Mengeluarkan uang ekstra demi promosi.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Kamu tetap mengeluarkan Rp35.000 tambahan. Nilai barang ekstra perlu dipertimbangkan.","good":false},{"t":"Meminjam uang untuk memenuhi syarat cashback","d":"Menambah utang untuk promosi.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Mengejar cashback dengan berutang dapat merugikan.","good":false}]}],[{"type":"choice","tag":"SITUASI 4 · TARGET TABUNGAN","title":"Target tiga bulan","icon":"🎯","text":"Kamu ingin mengumpulkan Rp300.000 dalam tiga bulan untuk membeli perlengkapan belajar. Berapa setoran bulanan yang perlu disiapkan dan bagaimana menjaga target?","chips":["Target Rp300.000","Waktu 3 bulan"],"options":[{"t":"Sisihkan Rp100.000 per bulan setelah kebutuhan pokok dihitung","d":"Membagi target ke setoran realistis dan terukur.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Tepat. Target dibagi menjadi setoran bulanan yang jelas dan dapat dievaluasi.","good":true},{"t":"Menunggu uang tersisa di akhir bulan tanpa rencana","d":"Tidak memiliki nominal dan jadwal tabungan.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Tanpa rencana, uang sisa mudah terpakai. Tetapkan nominal dan waktu.","good":false},{"t":"Simpan seluruh uang saku bulan ini sekaligus","d":"Mengabaikan kebutuhan harian demi target.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Target harus realistis agar kebutuhan pokok tetap terpenuhi.","good":false}]},{"type":"choice","tag":"SITUASI 5 · AUDIT KEUANGAN","title":"Periksa kondisi sebelum mengambil keputusan","icon":"🔎","text":"Akhir bulan tiba. Kamu memiliki tabungan, tetapi tagihan transportasi dan kebutuhan sekolah belum dibayar. Teman mengajak membeli barang baru secara cicilan. Apa keputusan terbaik?","chips":["Ada kewajiban belum dibayar","Cicilan bukan kebutuhan mendesak"],"options":[{"t":"Bayar kewajiban, pastikan kebutuhan, lalu evaluasi sisa uang","d":"Memeriksa arus kas sebelum mengambil komitmen baru.","delta":{"money":0,"priority":10,"literacy":10,"discipline":10},"fb":"Pilihan matang. Audit sederhana membantu melihat kewajiban dan sisa dana.","good":true},{"t":"Ambil cicilan karena pembayaran awal terasa ringan","d":"Menambah kewajiban tanpa menilai kemampuan membayar.","delta":{"money":-50000,"priority":-8,"literacy":-8,"discipline":-8},"fb":"Cicilan tetap menjadi kewajiban pada periode berikutnya.","good":false},{"t":"Gunakan tabungan untuk barang baru dan tunda tagihan","d":"Mengutamakan barang yang tidak mendesak.","delta":{"money":-80000,"priority":-12,"literacy":-10,"discipline":-10},"fb":"Menunda kewajiban dapat mengganggu kebutuhan berikutnya.","good":false}]}]];
+extraChallenges.forEach((scenes,index)=>chapters[index].scenes.push(...scenes));
+
 const endingDefs=[
  {id:'master',name:'Financial Master',emoji:'🏆',type:'good',desc:'Kamu mampu mengelola uang secara seimbang, memenuhi kebutuhan, menyiapkan tabungan, dan memahami konsekuensi pilihan.',rule:'Skor tinggi dan seluruh indikator berkembang baik.'},
  {id:'wise',name:'Wise Decision Maker',emoji:'🌟',type:'good',desc:'Kamu membuat keputusan yang matang dan mendahulukan hal penting. Tabunganmu mungkin belum besar, tetapi cara berpikirmu sudah bijak.',rule:'Keputusan dan prioritas kuat.'},
@@ -248,7 +294,7 @@ let S=load();
 function load(){try{const x=JSON.parse(localStorage.getItem('prioritasSave'));if(x&&typeof x.money==='number'&&Array.isArray(x.decisions))return {...initial(),...x}}catch(e){}return initial()}
 function save(){try{localStorage.setItem('prioritasSave',JSON.stringify(S));$('saveState').textContent='● Progres tersimpan otomatis'}catch(e){$('saveState').textContent='Penyimpanan tidak tersedia'}}
 function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
-let settings={sfx:true,motion:true,contrast:false};
+let settings={sfx:true,motion:true,contrast:false,music:true,musicVolume:32};
 try{settings={...settings,...JSON.parse(localStorage.getItem('prioritasSettings')||'{}')}}catch(e){}
 let audioCtx=null;
 function playSfx(kind='tap'){
@@ -265,50 +311,144 @@ function playSfx(kind='tap'){
   osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+dur+.02);
  }catch(e){}
 }
+// Musik instrumental sintetis, dibuat di browser tanpa berkas audio eksternal atau vokal.
+let musicCtx=null,musicMaster=null,musicTimer=null,musicStep=0,currentMusicScene=0;
+const soundtrack=[
+ {root:130.81,scale:[0,3,5,7,10,7,5,3],tempo:760,wave:'sine',gain:.36},
+ {root:146.83,scale:[0,3,7,10,7,5,3,5],tempo:570,wave:'triangle',gain:.42},
+ {root:164.81,scale:[0,2,5,7,9,7,5,2],tempo:490,wave:'triangle',gain:.42},
+ {root:110,scale:[0,3,5,7,10,12,10,7],tempo:430,wave:'sawtooth',gain:.20},
+ {root:123.47,scale:[0,4,7,11,7,4,2,7],tempo:390,wave:'triangle',gain:.34},
+ {root:174.61,scale:[0,2,4,7,9,7,4,2],tempo:530,wave:'sine',gain:.40},
+ {root:196,scale:[0,4,7,9,7,4,2,0],tempo:690,wave:'sine',gain:.38}
+];
+function getMusicContext(){
+ const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;
+ if(!musicCtx){musicCtx=new AC();musicMaster=musicCtx.createGain();musicMaster.gain.value=0;musicMaster.connect(musicCtx.destination);}
+ if(musicCtx.state==='suspended')musicCtx.resume();
+ return musicCtx;
+}
+function setMusicVolume(){if(!musicCtx||!musicMaster)return;const level=settings.music?Math.max(0,Math.min(100,Number(settings.musicVolume)||0))/100*.14:0;musicMaster.gain.setTargetAtTime(level,musicCtx.currentTime,.12);}
+function playMusicTone(freq,duration,peak,wave){
+ if(!musicCtx||!musicMaster)return;
+ const now=musicCtx.currentTime,osc=musicCtx.createOscillator(),gain=musicCtx.createGain(),filter=musicCtx.createBiquadFilter();
+ osc.type=wave;osc.frequency.setValueAtTime(freq,now);filter.type='lowpass';filter.frequency.value=wave==='sawtooth'?720:1800;
+ gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,peak),now+.025);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+ osc.connect(filter);filter.connect(gain);gain.connect(musicMaster);osc.start(now);osc.stop(now+duration+.04);
+}
+function musicBeat(){
+ if(!settings.music||!musicCtx)return;
+ const cfg=soundtrack[Math.max(0,Math.min(soundtrack.length-1,currentMusicScene))],semi=cfg.scale[musicStep%cfg.scale.length],octave=(musicStep%8===0)?1:2;
+ playMusicTone(cfg.root*Math.pow(2,semi/12)*octave,Math.min(.52,cfg.tempo/1000*.78),cfg.gain,cfg.wave);
+ if(musicStep%4===0)playMusicTone(cfg.root/2,Math.min(.8,cfg.tempo/1000*1.6),.14,'sine');
+ if(musicStep%8===6)playMusicTone(cfg.root*2,Math.min(.35,cfg.tempo/1000*.55),.10,'sine');
+ musicStep++;
+}
+function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null;}if(musicMaster&&musicCtx)musicMaster.gain.setTargetAtTime(0,musicCtx.currentTime,.08);}
+function setMusicScene(scene){
+ currentMusicScene=Math.max(0,Math.min(6,Number(scene)||0));
+ if(!settings.music){stopMusic();return;}
+ if(!getMusicContext())return;
+ if(musicTimer)clearInterval(musicTimer);
+ musicStep=0;setMusicVolume();musicBeat();musicTimer=setInterval(musicBeat,soundtrack[currentMusicScene].tempo);
+}
+function applyMusicSettings(){if(!settings.music){stopMusic();return;}setMusicScene(currentMusicScene);}
+document.addEventListener('pointerdown',()=>{if(settings.music&&!musicTimer)setMusicScene(currentMusicScene)},{once:true});
+
 function showAchievement(title,desc,icon='🏅',eyebrow='PENCAPAIAN TERBUKA'){
  $('achievementTitle').textContent=title;$('achievementText').textContent=desc;$('achievementIcon').textContent=icon;$('achievementEyebrow').textContent=eyebrow;
  $('achievementShade').classList.add('open');playSfx('level');
 }
 function closeAchievement(){$('achievementShade').classList.remove('open');playSfx('tap')}
-function openSettings(){$('sfxToggle').checked=settings.sfx;$('motionToggle').checked=settings.motion;$('contrastToggle').checked=settings.contrast;$('settingsModal').classList.add('open')}
-function saveSettings(){settings={sfx:$('sfxToggle').checked,motion:$('motionToggle').checked,contrast:$('contrastToggle').checked};localStorage.setItem('prioritasSettings',JSON.stringify(settings));document.body.classList.toggle('highContrast',settings.contrast);$('settingsModal').classList.remove('open');toast('Pengaturan disimpan');playSfx('good')}
+function openSettings(){$('sfxToggle').checked=settings.sfx;$('motionToggle').checked=settings.motion;$('contrastToggle').checked=settings.contrast;$('musicToggle').checked=settings.music;$('musicVolume').value=settings.musicVolume;$('musicVolumeValue').textContent=settings.musicVolume+'%';$('settingsModal').classList.add('open')}
+function saveSettings(){settings={...settings,sfx:$('sfxToggle').checked,motion:$('motionToggle').checked,contrast:$('contrastToggle').checked,music:$('musicToggle').checked,musicVolume:Number($('musicVolume').value)};localStorage.setItem('prioritasSettings',JSON.stringify(settings));document.body.classList.toggle('highContrast',settings.contrast);$('settingsModal').classList.remove('open');applyMusicSettings();toast('Pengaturan disimpan');playSfx('good')}
 $('menuPlay').onclick=()=>start(!S.started||!!S.ending);
 $('menuSettings').onclick=openSettings;$('gameSettings').onclick=openSettings;
-$('menuGallery').onclick=()=>page('endings');$('menuReviews').onclick=()=>page('reviews');$('menuCredits').onclick=()=>page('credits');
+$('menuGallery').onclick=()=>page('endings');$('menuReviews').onclick=()=>window.location.assign(FEEDBACK_URL);$('menuCredits').onclick=()=>page('credits');
 $('closeSettings').onclick=()=>$('settingsModal').classList.remove('open');$('doneSettings').onclick=saveSettings;
+$('musicVolume').addEventListener('input',()=>{$('musicVolumeValue').textContent=$('musicVolume').value+'%'});
 $('achievementOk').onclick=closeAchievement;
 $('backToMenu').onclick=()=>page('home');
 $('resetProgress').onclick=()=>{if(confirm('Hapus seluruh progres permainan dan mulai dari awal?')){S=initial();save();$('settingsModal').classList.remove('open');renderHome();toast('Progres berhasil direset')}};
 function page(name,quiet=false){
+ if(name==='reviews'){window.location.assign(FEEDBACK_URL);return;}
+ if(name==='home')setMusicScene(0);else if(name==='game')setMusicScene(Math.min(5,S.chapter+1));
  const curtain=$('transitionCurtain');
  if(!quiet&&settings.motion){curtain.classList.add('active');setTimeout(()=>curtain.classList.remove('active'),260)}
  if(!quiet)playSfx('transition');
  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===name));
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
  document.body.classList.toggle('inGame',name==='game');
- if(name==='endings')renderEndings();if(name==='reviews')renderReviews();if(name==='home')renderHome();
+ if(name==='endings')renderEndings();if(name==='home')renderHome();
  window.scrollTo({top:0,behavior:'smooth'});
 }
-document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>page(b.dataset.page)));
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.page==='reviews'){window.location.assign(FEEDBACK_URL);return;}page(b.dataset.page)}));
 function renderHome(){$('homeProgress').textContent=S.chapterDone+'/5';$('homeMoney').textContent=fmt(S.money);$('homeScore').textContent=S.score;$('homeEnding').textContent=S.unlocked.length+'/5';$('continueBtn').textContent=S.started&&!S.ending?'Lanjutkan permainan':'Mulai dari awal';$('menuPlay').querySelector('b').textContent=S.started&&!S.ending?'Lanjutkan bermain':'Mulai bermain';$('menuPlay').querySelector('small').textContent=S.started&&!S.ending?'Lanjutkan dari progres tersimpan':'Masuk ke petualangan 5 babak'}
 function updateMeters(){ $('sideMoney').textContent=fmt(S.money);$('moneyBar').style.width=clamp(S.money/3000)+'%';[['priority',S.priority],['literacy',S.literacy],['discipline',S.discipline]].forEach(([k,v])=>{$(k+'Val').textContent=clamp(v);$(k+'Bar').style.width=clamp(v)+'%' });$('decisionCount').textContent=S.decisions.length+' keputusan telah dibuat.'}
 const originalGameMarkup=$('game').innerHTML;
 function restoreGameMarkup(){if(!$('chapterTag')){$('game').innerHTML=originalGameMarkup;$('showLogBtn').onclick=()=>{const lines=S.decisions.map((d,i)=>`${i+1}. Babak ${d.chapter+1}: ${d.answer}\n   ${d.feedback}`).join('\n\n');alert(lines||'Belum ada keputusan. Mulai permainan untuk membuat catatan.')};}}
 function start(fresh=false){restoreGameMarkup();if(fresh){S=initial();save()}S.started=true;if(S.ending){S=initial();S.started=true}save();page('game');renderScene();showAchievement('Petualangan dimulai!','Kamu akan melewati lima babak. Baca situasi, pertimbangkan pilihan, lalu pelajari konsekuensinya.','🚀','MISI BARU')}
 $('startBtn').onclick=()=>start(true);$('continueBtn').onclick=()=>start(false);$('playAgain').onclick=()=>start(true);
+
+function renderChoiceList(sc,interaction){
+ sc.options.forEach((o,i)=>{const b=document.createElement('button');b.className='choice';b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span><strong>${o.t}</strong><small>${o.d}</small></span>`;b.addEventListener('click',()=>choose(i));interaction.appendChild(b)});
+}
+function renderPriorityMode(sc,interaction){
+ const shuffled=sc.options.map((o,i)=>({o,i,sort:(i*5+S.scene*2+1)%7})).sort((a,b)=>a.sort-b.sort);
+ interaction.innerHTML=`<div class="modePanel"><h4>📌 Papan skala prioritas</h4><p>Urutkan tiga tindakan dari yang paling perlu dilakukan terlebih dahulu. Beri peringkat 1 sampai 3, lalu kunci urutanmu.</p><div class="modeGrid">${shuffled.map(x=>`<div class="modeRow"><span><b>${x.o.t}</b><br><small class="muted">${x.o.d}</small></span><select class="rankSelect" data-option="${x.i}"><option value="">Pilih urutan</option><option value="1">Prioritas 1</option><option value="2">Prioritas 2</option><option value="3">Prioritas 3</option></select></div>`).join('')}</div><div class="modeActions"><button class="modeSubmit" id="rankSubmit" disabled>Kunci urutan</button><span class="small muted">Setiap peringkat harus berbeda.</span></div></div>`;
+ const selects=[...interaction.querySelectorAll('.rankSelect')],submit=$('rankSubmit');
+ const validate=()=>{const values=selects.map(x=>x.value);submit.disabled=values.some(x=>!x)||new Set(values).size!==3;};
+ selects.forEach(x=>x.addEventListener('change',validate));
+ submit.addEventListener('click',()=>{const ordered=selects.map(x=>({i:Number(x.dataset.option),rank:Number(x.value)})).sort((a,b)=>a.rank-b.rank).map(x=>x.i);const matches=ordered.filter((x,index)=>x===index).length;choose(matches===3?0:matches===2?1:2);submit.disabled=true;});
+}
+function renderOpportunityMode(sc,interaction){
+ const options=sc.options.map((o,i)=>`<option value="${i}">${o.t}</option>`).join('');
+ interaction.innerHTML=`<div class="modePanel"><h4>⚖️ Laboratorium biaya peluang</h4><p>Pilih satu keputusan. Setelah itu, tentukan alternatif terbaik yang kamu lepaskan karena pilihan tersebut. Biaya peluang adalah nilai alternatif terbaik yang dikorbankan.</p><div class="modeGrid"><label class="small">Keputusan yang kamu ambil<select class="modeSelect" id="oppChoice"><option value="">Pilih keputusan</option>${options}</select></label><label class="small">Alternatif terbaik yang dikorbankan<select class="modeSelect" id="oppForegone" disabled><option value="">Pilih alternatif yang berbeda</option></select></label></div><div class="modeActions"><button class="modeSubmit" id="oppSubmit" disabled>Hitung biaya peluang</button></div></div>`;
+ const chosen=$('oppChoice'),foregone=$('oppForegone'),submit=$('oppSubmit');
+ chosen.addEventListener('change',()=>{foregone.innerHTML='<option value="">Pilih alternatif yang berbeda</option>'+sc.options.map((o,i)=>i===Number(chosen.value)?'':`<option value="${i}">${o.t}</option>`).join('');foregone.disabled=chosen.value==='';submit.disabled=true;});
+ foregone.addEventListener('change',()=>{submit.disabled=chosen.value===''||foregone.value==='';});
+ submit.addEventListener('click',()=>{const decision=Number(chosen.value),cost=Number(foregone.value);const result=decision===0&&cost===1?0:decision===0?1:2;choose(result);submit.disabled=true;});
+}
+function renderBudgetMode(sc,interaction){
+ interaction.innerHTML=`<div class="modePanel"><h4>🧮 Simulasi alokasi anggaran</h4><p>Kamu memiliki anggaran simulasi Rp150.000. Bagikan uang untuk kebutuhan, tabungan, dan keinginan. Pastikan jumlahnya tidak melebihi anggaran.</p><div class="budgetFields"><div class="budgetField"><label for="allocNeeds">Kebutuhan (Rp)</label><input id="allocNeeds" type="number" min="0" max="150000" step="5000" value="90000"></div><div class="budgetField"><label for="allocSave">Tabungan (Rp)</label><input id="allocSave" type="number" min="0" max="150000" step="5000" value="40000"></div><div class="budgetField"><label for="allocWants">Keinginan (Rp)</label><input id="allocWants" type="number" min="0" max="150000" step="5000" value="20000"></div></div><div class="budgetTotal"><span id="allocTotal">Total: Rp150.000</span><span id="allocRemaining">Sisa: Rp0</span></div><div class="modeActions"><button class="modeSubmit" id="allocSubmit">Kunci alokasi</button><span class="small muted">Anggaran harus dibagi secara realistis.</span></div></div>`;
+ const fields=[$('allocNeeds'),$('allocSave'),$('allocWants')],submit=$('allocSubmit');
+ const update=()=>{const vals=fields.map(x=>Math.max(0,Number(x.value)||0)),total=vals.reduce((a,b)=>a+b,0),valid=total<=150000;$('allocTotal').textContent='Total: Rp'+total.toLocaleString('id-ID');$('allocRemaining').textContent='Sisa: Rp'+(150000-total).toLocaleString('id-ID');$('allocRemaining').style.color=valid?'var(--mint)':'var(--pink)';submit.disabled=!valid;};
+ fields.forEach(x=>x.addEventListener('input',update));update();
+ submit.addEventListener('click',()=>{const [needs,savings,wants]=fields.map(x=>Math.max(0,Number(x.value)||0));const total=needs+savings+wants;if(total>150000){toast('Alokasi melebihi anggaran.');return;}const result=needs>=75000&&savings>=20000&&wants<=35000?0:needs>=60000&&savings>=10000?1:2;choose(result);submit.disabled=true;});
+}
+function renderAuditMode(sc,interaction){
+ interaction.innerHTML=`<div class="modePanel"><h4>🔎 Audit keputusan akhir</h4><p>Pilih tindakan yang akan kamu ambil. Sebelum mengunci keputusan, periksa tiga hal: kebutuhan utama, dana cadangan, dan kemampuan memenuhi kewajiban.</p><div class="choices">${sc.options.map((o,i)=>`<button type="button" class="choice auditChoice" data-choice="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span><strong>${o.t}</strong><small>${o.d}</small></span></button>`).join('')}</div><div class="auditChecks"><label><input type="checkbox" class="auditCheck"> Saya sudah memeriksa kebutuhan utama yang belum terpenuhi.</label><label><input type="checkbox" class="auditCheck"> Saya memperhitungkan dana cadangan dan kewajiban berikutnya.</label><label><input type="checkbox" class="auditCheck"> Saya tidak menambah utang untuk keinginan yang tidak mendesak.</label></div><div class="modeActions"><button class="modeSubmit" id="auditSubmit" disabled>Kunci hasil audit</button><span class="small muted">Pilih tindakan dan selesaikan pemeriksaan.</span></div></div>`;
+ let selected=-1;const choices=[...interaction.querySelectorAll('.auditChoice')],checks=[...interaction.querySelectorAll('.auditCheck')],submit=$('auditSubmit');
+ const validate=()=>{submit.disabled=selected<0;};
+ choices.forEach(btn=>btn.addEventListener('click',()=>{selected=Number(btn.dataset.choice);choices.forEach(x=>x.style.borderColor=x===btn?'var(--mint)':'#ffffff19');validate();}));
+ checks.forEach(x=>x.addEventListener('change',validate));
+ submit.addEventListener('click',()=>{const checked=checks.filter(x=>x.checked).length;const result=selected===0?(checked===3?0:checked>=1?1:2):selected;choose(result);submit.disabled=true;});
+}
+function renderChapterMechanic(sc,interaction){
+ if(S.chapter===1)renderPriorityMode(sc,interaction);
+ else if(S.chapter===2)renderOpportunityMode(sc,interaction);
+ else if(S.chapter===3)renderBudgetMode(sc,interaction);
+ else if(S.chapter===4)renderAuditMode(sc,interaction);
+ else renderChoiceList(sc,interaction);
+}
 function renderScene(){
  if(S.chapter>=chapters.length){finish();return}
  const ch=chapters[S.chapter],sc=ch.scenes[S.scene];
  $('chapterTag').textContent='BABAK '+String(S.chapter+1).padStart(2,'0')+' · '+ch.title.toUpperCase();
  $('layerStage').textContent='BABAK '+String(S.chapter+1).padStart(2,'0');
- $('chapterTitle').textContent=ch.title;$('roundLabel').textContent='Tantangan '+(S.scene+1)+' dari 3';
- $('gameProgress').style.width=((S.chapter*3+S.scene)/15*100)+'%';
+ $('chapterTitle').textContent=ch.title;$('roundLabel').textContent='Tantangan '+(S.scene+1)+' dari '+ch.scenes.length;
+ const totalScenes=chapters.reduce((n,c)=>n+c.scenes.length,0);
+ $('gameProgress').style.width=((chapters.slice(0,S.chapter).reduce((n,c)=>n+c.scenes.length,0)+S.scene)/totalScenes*100)+'%';
+ $('roundLabel').textContent='Tantangan '+(S.scene+1)+' dari '+ch.scenes.length;
+ setMusicScene(S.chapter+1);
+ const modeNames=['quick','priority','opportunity','budget','audit'];
+ document.querySelector('.scenario').dataset.mode=modeNames[S.chapter]||'quick';
  $('sceneIcon').textContent=sc.icon;$('sceneTag').textContent=sc.tag;$('sceneTitle').textContent=sc.title;$('sceneText').textContent=sc.text;
  $('sceneChips').innerHTML=sc.chips.map(x=>`<span class="budgetchip">${x}</span>`).join('');
  $('missionText').textContent=ch.mission;$('conceptNote').textContent='Konsep: '+ch.concept+'.';
  $('feedback').className='feedback';$('feedback').textContent='';$('nextBtn').classList.add('hidden');$('hintText').textContent='Pikirkan konsekuensi sebelum memilih.';
  const interaction=$('interaction');interaction.innerHTML='';
- sc.options.forEach((o,i)=>{const b=document.createElement('button');b.className='choice';b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span><strong>${o.t}</strong><small>${o.d}</small></span>`;b.addEventListener('click',()=>choose(i));interaction.appendChild(b)});
+ renderChapterMechanic(sc,interaction);
  updateMeters();save();
  if(settings.motion){const scard=document.querySelector('.scenario');if(scard){scard.classList.remove('scenePulse');void scard.offsetWidth;scard.classList.add('scenePulse')}}
 }
@@ -319,45 +459,42 @@ function choose(i){
  S.decisions.push({chapter:S.chapter,scene:S.scene,choice:i,title:sc.title,answer:o.t,good:o.good,feedback:o.fb});
  document.querySelectorAll('.choice').forEach((b,j)=>{b.disabled=true;if(j===i)b.style.borderColor=o.good?'#5de0b3':'#ff8fa8'});
  const fb=$('feedback');fb.textContent=(o.good?'✓ Keputusan yang baik. ':'↗ Ada hal yang perlu dipertimbangkan. ')+o.fb;fb.classList.add('show');if(!o.good)fb.classList.add('bad');
- $('hintText').textContent='Baca pembahasan sebelum melanjutkan.';$('nextBtn').classList.remove('hidden');$('nextBtn').dataset.done='1';$('nextBtn').textContent=S.scene===2?(S.chapter===4?'Lihat ending →':'Selesaikan babak →'):'Tantangan berikutnya →';
+ $('hintText').textContent='Baca pembahasan sebelum melanjutkan.';$('nextBtn').classList.remove('hidden');$('nextBtn').dataset.done='1';$('nextBtn').textContent=S.scene===chapters[S.chapter].scenes.length-1?(S.chapter===4?'Lihat ending →':'Selesaikan babak →'):'Tantangan berikutnya →';
  updateMeters();save();
 }
 $('nextBtn').onclick=()=>{
  if($('nextBtn').dataset.done!=='1')return;$('nextBtn').dataset.done='0';
  const wasChapter=S.chapter;
- if(S.scene<2)S.scene++;else{S.chapterDone=Math.max(S.chapterDone,S.chapter+1);S.chapter++;S.scene=0}
+ if(S.scene<chapters[S.chapter].scenes.length-1)S.scene++;else{S.chapterDone=Math.max(S.chapterDone,S.chapter+1);S.chapter++;S.scene=0}
  save();renderScene();
  if(S.chapter>wasChapter&&S.chapter<5){const ch=chapters[S.chapter];showAchievement('Babak selesai!',`Kamu membuka babak berikutnya: ${ch.title}. ${ch.mission}`,ch.icon,'PROGRES CERITA');}
- else if(S.chapter===5){playSfx('ending');}
+ else if(S.chapter===chapters.length){playSfx('ending');}
  else if(S.decisions.length===5||S.decisions.length===10){showAchievement('Kamu semakin dekat!',`${S.decisions.length} dari 15 keputusan telah diselesaikan. Terus pertimbangkan kebutuhan dan konsekuensinya.`,'✨','PENCAPAIAN PROGRES');}
 };
 $('showLogBtn').onclick=()=>{const lines=S.decisions.map((d,i)=>`${i+1}. Babak ${d.chapter+1}: ${d.answer}\n   ${d.feedback}`).join('\n\n');alert(lines||'Belum ada keputusan. Mulai permainan untuk membuat catatan.')};
 function finish(){
+ setMusicScene(6);
  S.chapterDone=5;S.ending=pickEnding();if(!S.unlocked.includes(S.ending))S.unlocked.push(S.ending);save();playSfx('ending');
  const e=endingDefs.find(x=>x.id===S.ending);
  $('game').innerHTML=`<div class="resultbanner"><div class="eyebrow">PERJALANAN SELESAI</div><div class="big">${e.emoji}</div><h2>${e.name}</h2><p class="muted" style="max-width:650px;margin:0 auto 18px">${e.desc}</p><div class="stats" style="max-width:700px;margin:20px auto"><div class="stat"><label>SKOR</label><strong>${S.score}</strong></div><div class="stat"><label>SALDO AKHIR</label><strong>${fmt(S.money)}</strong></div><div class="stat"><label>KEPUTUSAN BAIK</label><strong>${S.goodChoices}/15</strong></div><div class="stat"><label>ENDING</label><strong>${S.unlocked.length}/5</strong></div></div><button class="btn primary" id="endingReview">Lihat evaluasi →</button> <button class="btn secondary" id="endingReplay">Main ulang</button></div><div class="card" style="margin-top:16px"><h3>📖 Evaluasi perjalananmu</h3><p class="muted small">Prioritas: ${S.priority}/100 · Literasi keuangan: ${S.literacy}/100 · Kedisiplinan: ${S.discipline}/100</p><p class="small">Kamu membuat ${S.decisions.length} keputusan. Coba baca kembali ringkasan pilihan untuk memahami keputusan mana yang paling berpengaruh.</p><button class="btn secondary" id="endingLog">Lihat ringkasan keputusan</button></div>`;
- $('endingReview').onclick=()=>page('reviews');$('endingReplay').onclick=()=>start(true);$('endingLog').onclick=()=> $('showLogBtn').click();
+ $('endingReview').onclick=()=>window.location.assign(FEEDBACK_URL);$('endingReplay').onclick=()=>start(true);$('endingLog').onclick=()=>{const lines=S.decisions.map((d,i)=>(i+1)+'. Babak '+(d.chapter+1)+': '+d.answer+'\n   '+d.feedback).join('\n\n');alert(lines||'Belum ada keputusan.');};
  renderHome();setTimeout(()=>showAchievement('Ending terbuka!',`${e.name}: ${e.desc}`,e.emoji,'HASIL PERJALANAN'),350);
 }
 function pickEnding(){
  const avg=(S.priority+S.literacy+S.discipline)/3;
  if(S.money<0||avg<28||S.priority<18)return 'disaster';
- if(avg>=82&&S.priority>=78&&S.literacy>=78&&S.discipline>=72&&S.goodChoices>=11)return 'master';
- if(avg>=68&&S.priority>=62&&S.literacy>=62&&S.goodChoices>=8)return 'wise';
- if(avg<48||S.badChoices>=9)return 'spender';
+ if(avg>=82&&S.priority>=78&&S.literacy>=78&&S.discipline>=72&&S.goodChoices>=18)return 'master';
+ if(avg>=68&&S.priority>=62&&S.literacy>=62&&S.goodChoices>=14)return 'wise';
+ if(avg<48||S.badChoices>=15)return 'spender';
  return 'enough';
 }
 function renderEndings(){
  $('endingGallery').innerHTML=endingDefs.map(e=>{const open=S.unlocked.includes(e.id);return `<div class="ending ${open?'':'lock'}"><div class="emoji">${open?e.emoji:'🔒'}</div><h4>${open?e.name:'Ending terkunci'}</h4><p class="small muted">${open?e.desc:'Selesaikan permainan dan ambil keputusan yang berbeda untuk membuka ending ini.'}</p><span class="tag">${open?'TERBUKA':e.type.toUpperCase()}</span></div>`}).join('');
 }
-let selectedStars=0;
-$('starPicker').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{selectedStars=Number(b.dataset.star);$('starPicker').querySelectorAll('button').forEach(x=>x.classList.toggle('selected',Number(x.dataset.star)<=selectedStars))}));
-function getReviews(){try{return JSON.parse(localStorage.getItem('prioritasReviews')||'[]')}catch(e){return []}}
-$('reviewForm').addEventListener('submit',e=>{e.preventDefault();if(!selectedStars){toast('Pilih jumlah bintang terlebih dahulu.');return}const reviews=getReviews();reviews.unshift({name:$('reviewName').value.trim()||'Pemain',stars:selectedStars,text:$('reviewText').value.trim(),date:new Date().toLocaleDateString('id-ID')});try{localStorage.setItem('prioritasReviews',JSON.stringify(reviews.slice(0,30)))}catch(err){toast('Ulasan tidak dapat disimpan di perangkat ini.');return}$('reviewForm').reset();selectedStars=0;$('starPicker').querySelectorAll('button').forEach(x=>x.classList.remove('selected'));renderReviews();toast('Terima kasih! Ulasan tersimpan di perangkat ini.')});
-function renderReviews(){const r=getReviews();$('reviewCount').textContent=r.length?`${r.length} ulasan tersimpan di browser ini.`:'Belum ada ulasan di perangkat ini.';$('reviewList').innerHTML=r.map(x=>`<div class="reviewitem"><div style="display:flex;justify-content:space-between;gap:8px"><b>${escapeHTML(x.name)}</b><span style="color:var(--gold)">${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</span></div><p class="small">${escapeHTML(x.text)}</p><span class="muted" style="font-size:10px">${escapeHTML(x.date)}</span></div>`).join('')}
+function renderReviews(){/* Umpan balik menggunakan Google Forms. */}
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
-function init(){renderHome();renderEndings();renderReviews();$('nextBtn').dataset.done='0';document.body.classList.toggle('highContrast',settings.contrast);if(S.started&&!S.ending){$('continueBtn').textContent='Lanjutkan permainan';}else{$('continueBtn').textContent='Mulai dari awal'}}
+function init(){renderHome();renderEndings();$('nextBtn').dataset.done='0';document.body.classList.toggle('highContrast',settings.contrast);if(S.started&&!S.ending){$('continueBtn').textContent='Lanjutkan permainan';}else{$('continueBtn').textContent='Mulai dari awal'}}
 init();
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('settingsModal').classList.remove('open');$('achievementShade').classList.remove('open')}});
 })();
