@@ -1,0 +1,26 @@
+name: Browser smoke test
+
+on:
+  push:
+    branches:
+      - feature/music-gameplay-profile-links
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser smoke test
+        run: node tests/smoke.cjs
