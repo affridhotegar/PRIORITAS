@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
 
     if (!(await page.locator("#home.active").count())) throw new Error("Beranda tidak tampil.");
     await page.locator("#menuSettings").click();
-    await page.locator("#musicVolume").fill("27");
+    await page.locator("#musicVolume").evaluate((el) => { el.value = "27"; el.dispatchEvent(new Event("input", { bubbles: true })); });
     await page.locator("#musicToggle").uncheck();
     await page.locator("#doneSettings").click();
     await page.locator("#menuPlay").click();
